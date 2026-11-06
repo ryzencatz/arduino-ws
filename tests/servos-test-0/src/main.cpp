@@ -1,18 +1,31 @@
 #include <Arduino.h>
+#include <Servo.h>
+
+Servo myServo;
+int const potPin = A0;
+int potVal;
+int angle;
 
 // put function declarations here:
-int myFunction(int, int);
 
 void setup() {
   // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  myServo.attach(9);
+  Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  potVal = analogRead(potPin);
+  Serial.print("potVal: ");
+  Serial.print(potVal);
+
+  angle = map(potVal,0,1023,0,179);
+  Serial.print(", angle: ");
+  Serial.println("angle");
+
+  myServo.write(angle);
+  delay(15);
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
+// // put function definitions here:
