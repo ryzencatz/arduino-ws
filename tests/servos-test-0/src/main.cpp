@@ -22,7 +22,7 @@ void loop() {
 
   angle = map(potVal,0,1023,0,179);
   Serial.print(", angle: ");
-  Serial.println("angle");
+  Serial.println(angle);
 
   myServo.write(angle);
   delay(15);
